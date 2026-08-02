@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "market_price_fact",
+  "type": "object",
+
+  "properties": {
+
+    "company_id": {
+      "type": "string"
+    },
+
+    "ticker": {
+      "type": "string"
+    },
+
+    "trade_date": {
+      "type": "string"
+    },
+
+
+    "open_price": {
+      "type": "number"
+    },
+
+    "high_price": {
+      "type": "number"
+    },
+
+    "low_price": {
+      "type": "number"
+    },
+
+    "close_price": {
+      "type": "number"
+    },
+
+    "adjusted_close_price": {
+      "type": "number"
+    },
+
+
+    "volume": {
+      "type": "number"
+    },
+
+
+    "market_cap": {
+      "type": "number"
+    },
+
+    "enterprise_value": {
+      "type": "number"
+    },
+
+
+    "shares_outstanding": {
+      "type": "number"
+    },
+
+
+    "pe_ratio": {
+      "type": "number"
+    },
+
+    "price_to_book_ratio": {
+      "type": "number"
+    },
+
+    "price_to_sales_ratio": {
+      "type": "number"
+    },
+
+    "ev_to_ebitda": {
+      "type": "number"
+    },
+
+
+    "dividend_yield": {
+      "type": "number"
+    },
+
+
+    "source_system": {
+      "type": "string"
+    },
+
+    "ingestion_timestamp": {
+      "type": "string"
+    }
+
+  }
+}

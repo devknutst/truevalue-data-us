@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "company_dimension",
+  "type": "object",
+
+  "properties": {
+
+    "company_id": {
+      "type": "string"
+    },
+
+    "ticker": {
+      "type": "string"
+    },
+
+    "cik": {
+      "type": "string"
+    },
+
+    "cusip": {
+      "type": "string"
+    },
+
+    "isin": {
+      "type": "string"
+    },
+
+    "company_name": {
+      "type": "string"
+    },
+
+    "legal_name": {
+      "type": "string"
+    },
+
+    "exchange": {
+      "type": "string"
+    },
+
+    "market": {
+      "type": "string"
+    },
+
+    "country": {
+      "type": "string"
+    },
+
+    "currency": {
+      "type": "string"
+    },
+
+    "sector": {
+      "type": "string"
+    },
+
+    "industry": {
+      "type": "string"
+    },
+
+    "sic_code": {
+      "type": "string"
+    },
+
+    "naics_code": {
+      "type": "string"
+    },
+
+    "website": {
+      "type": "string"
+    },
+
+    "ipo_date": {
+      "type": "string"
+    },
+
+    "employees": {
+      "type": "integer"
+    },
+
+    "business_description": {
+      "type": "string"
+    },
+
+    "active_flag": {
+      "type": "boolean"
+    },
+
+    "source_system": {
+      "type": "string"
+    },
+
+    "created_timestamp": {
+      "type": "string"
+    },
+
+    "updated_timestamp": {
+      "type": "string"
+    }
+  }
+}

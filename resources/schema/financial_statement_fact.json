@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "financial_statement_fact",
+  "type": "object",
+
+  "properties": {
+
+    "company_id": {
+      "type": "string"
+    },
+
+    "ticker": {
+      "type": "string"
+    },
+
+    "statement_type": {
+      "type": "string"
+    },
+
+    "fiscal_year": {
+      "type": "integer"
+    },
+
+    "fiscal_quarter": {
+      "type": "integer"
+    },
+
+    "period_start_date": {
+      "type": "string"
+    },
+
+    "period_end_date": {
+      "type": "string"
+    },
+
+    "filing_date": {
+      "type": "string"
+    },
+
+
+    "revenue": {
+      "type": "number"
+    },
+
+    "cost_of_revenue": {
+      "type": "number"
+    },
+
+    "gross_profit": {
+      "type": "number"
+    },
+
+    "research_and_development": {
+      "type": "number"
+    },
+
+    "selling_general_administrative": {
+      "type": "number"
+    },
+
+    "operating_income": {
+      "type": "number"
+    },
+
+    "ebit": {
+      "type": "number"
+    },
+
+    "ebitda": {
+      "type": "number"
+    },
+
+    "ebitda_margin": {
+      "type": "number"
+    },
+
+    "interest_income": {
+      "type": "number"
+    },
+
+    "interest_expense": {
+      "type": "number"
+    },
+
+    "pretax_income": {
+      "type": "number"
+    },
+
+    "income_tax_expense": {
+      "type": "number"
+    },
+
+    "effective_tax_rate": {
+      "type": "number"
+    },
+
+    "net_income": {
+      "type": "number"
+    },
+
+
+    "eps_basic": {
+      "type": "number"
+    },
+
+    "eps_diluted": {
+      "type": "number"
+    },
+
+
+    "cash_and_cash_equivalents": {
+      "type": "number"
+    },
+
+    "short_term_investments": {
+      "type": "number"
+    },
+
+    "accounts_receivable": {
+      "type": "number"
+    },
+
+    "inventory": {
+      "type": "number"
+    },
+
+    "total_current_assets": {
+      "type": "number"
+    },
+
+    "property_plant_equipment": {
+      "type": "number"
+    },
+
+    "goodwill": {
+      "type": "number"
+    },
+
+    "intangible_assets": {
+      "type": "number"
+    },
+
+    "total_assets": {
+      "type": "number"
+    },
+
+
+    "accounts_payable": {
+      "type": "number"
+    },
+
+    "current_liabilities": {
+      "type": "number"
+    },
+
+    "short_term_debt": {
+      "type": "number"
+    },
+
+    "long_term_debt": {
+      "type": "number"
+    },
+
+    "total_debt": {
+      "type": "number"
+    },
+
+    "total_liabilities": {
+      "type": "number"
+    },
+
+    "shareholders_equity": {
+      "type": "number"
+    },
+
+    "retained_earnings": {
+      "type": "number"
+    },
+
+
+    "operating_cash_flow": {
+      "type": "number"
+    },
+
+    "capital_expenditure": {
+      "type": "number"
+    },
+
+    "free_cash_flow": {
+      "type": "number"
+    },
+
+    "investing_cash_flow": {
+      "type": "number"
+    },
+
+    "financing_cash_flow": {
+      "type": "number"
+    },
+
+    "depreciation_and_amortization": {
+      "type": "number"
+    },
+
+    "stock_based_compensation": {
+      "type": "number"
+    },
+
+
+    "basic_shares_outstanding": {
+      "type": "number"
+    },
+
+    "diluted_shares_outstanding": {
+      "type": "number"
+    },
+
+
+    "dividends_paid": {
+      "type": "number"
+    },
+
+    "dividend_per_share": {
+      "type": "number"
+    },
+
+
+    "working_capital": {
+      "type": "number"
+    },
+
+    "net_working_capital": {
+      "type": "number"
+    },
+
+    "net_debt": {
+      "type": "number"
+    },
+
+    "invested_capital": {
+      "type": "number"
+    },
+
+
+    "source_system": {
+      "type": "string"
+    },
+
+    "source_record_id": {
+      "type": "string"
+    },
+
+    "ingestion_timestamp": {
+      "type": "string"
+    }
+  }
+}
