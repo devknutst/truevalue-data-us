@@ -118,3 +118,5 @@ python -m pytest tests/ -v
 
 The suite uses a stub extractor and needs neither network access nor a yfinance
 installation.
+
+
