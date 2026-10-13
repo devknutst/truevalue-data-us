@@ -26,6 +26,7 @@ import pandas as pd
 
 from .extract import RawTickerData
 from .schemas import to_float
+from .transform_common import build_source_record_id, safe_ratio, safe_sum
 
 logger = logging.getLogger(__name__)
 
@@ -341,21 +342,6 @@ def _first_present(source: Mapping[str, Any], keys: Sequence[str]) -> Optional[f
     return None
 
 
-def _safe_ratio(numerator: Optional[float], denominator: Optional[float]) -> Optional[float]:
-    """Divide, returning ``None`` on missing inputs or a zero denominator."""
-    if numerator is None or denominator is None or denominator == 0:
-        return None
-    return numerator / denominator
-
-
-def _safe_sum(*values: Optional[float]) -> Optional[float]:
-    """Sum values, treating ``None`` as zero but returning ``None`` if all are ``None``."""
-    present = [value for value in values if value is not None]
-    if not present:
-        return None
-    return sum(present)
-
-
 # --------------------------------------------------------------------------- #
 # company_dimension
 # --------------------------------------------------------------------------- #
@@ -581,8 +567,8 @@ def _add_derived_values(values: Dict[str, Optional[float]]) -> None:
     Fields already populated from a native yfinance line item (``working_capital``,
     ``net_debt``, ``invested_capital``) keep Yahoo's value; only gaps are filled.
     """
-    values["ebitda_margin"] = _safe_ratio(values.get("ebitda"), values.get("revenue"))
-    values["effective_tax_rate"] = _safe_ratio(
+    values["ebitda_margin"] = safe_ratio(values.get("ebitda"), values.get("revenue"))
+    values["effective_tax_rate"] = safe_ratio(
         values.get("income_tax_expense"), values.get("pretax_income")
     )
 
@@ -601,7 +587,7 @@ def _add_derived_values(values: Dict[str, Optional[float]]) -> None:
     # Operating (net) working capital: current assets and liabilities excluding
     # the financing items, i.e. cash/short-term investments and short-term debt.
     if current_assets is not None and current_liabilities is not None:
-        operating_assets = current_assets - (_safe_sum(cash, short_term_investments) or 0.0)
+        operating_assets = current_assets - (safe_sum(cash, short_term_investments) or 0.0)
         operating_liabilities = current_liabilities - (short_term_debt or 0.0)
         values["net_working_capital"] = operating_assets - operating_liabilities
     else:
@@ -609,7 +595,7 @@ def _add_derived_values(values: Dict[str, Optional[float]]) -> None:
 
     if values.get("net_debt") is None:
         if total_debt is not None:
-            liquid = _safe_sum(cash, short_term_investments) or 0.0
+            liquid = safe_sum(cash, short_term_investments) or 0.0
             values["net_debt"] = total_debt - liquid
 
     if values.get("invested_capital") is None:
@@ -744,7 +730,7 @@ def _build_records_for_period(
         )
         record = dict(common)
         record["statement_type"] = statement_type
-        record["source_record_id"] = _source_record_id(
+        record["source_record_id"] = build_source_record_id(
             raw.ticker, statement_type, period_end_date
         )
         record.update(values)
@@ -758,19 +744,12 @@ def _build_records_for_period(
             continue
         record = dict(common)
         record["statement_type"] = statement_type
-        record["source_record_id"] = _source_record_id(
+        record["source_record_id"] = build_source_record_id(
             raw.ticker, statement_type, period_end_date
         )
         record.update(subset)
         records.append(record)
     return records
-
-
-def _source_record_id(
-    ticker: str, statement_type: str, period_end_date: Optional[str]
-) -> str:
-    """Build a deterministic natural key for lineage back to the source."""
-    return "{}:{}:{}".format(ticker, statement_type, period_end_date or "unknown")
 
 
 # --------------------------------------------------------------------------- #
